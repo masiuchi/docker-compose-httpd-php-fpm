@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  httpd:
+    image: httpd
+    volumes:
+      - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./htdocs:/usr/local/apache2/htdocs
+    ports:
+      - 8080:80
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    image: php:fpm
+    volumes:
+      - ./htdocs:/usr/local/apache2/htdocs
+
