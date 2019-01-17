@@ -2,7 +2,7 @@ version: '3'
 
 services:
   httpd:
-    image: httpd
+    image: httpd:alpine
     volumes:
       - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./htdocs:/usr/local/apache2/htdocs
@@ -12,7 +12,7 @@ services:
       - php-fpm
 
   php-fpm:
-    image: php:${PHP_VERSION}-fpm
+    image: php:${PHP_VERSION}-fpm-alpine
     volumes:
       - ./htdocs:/usr/local/apache2/htdocs
 
